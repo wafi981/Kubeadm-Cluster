@@ -14,3 +14,21 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
+
+
+#Resolving container runtime errors:
+
+sudo rm /etc/containerd/config.toml
+sudo systemctl restart containerd
+
+
+Create cluster:
+
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml

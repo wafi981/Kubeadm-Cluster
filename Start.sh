@@ -22,7 +22,7 @@ sudo rm /etc/containerd/config.toml
 sudo systemctl restart containerd
 
 
-Create cluster:
+#Create cluster:
 
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 

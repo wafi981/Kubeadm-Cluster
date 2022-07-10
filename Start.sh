@@ -32,6 +32,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 
 kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+kubectl taint nodes --all node-role.kubernetes.io/control-plane- node-role.kubernetes.io/master-
+
 
 #INSTALL HELM
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
